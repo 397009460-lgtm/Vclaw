@@ -56,7 +56,7 @@ async function main() {
   });
 
   app.get('/build', (req, res) => {
-    res.json({ success: true, version: config.buildVersion, app: config.appName });
+    res.json({ success: true, build: config.buildVersion, nodeEnv: config.nodeEnv });
   });
 
   app.use((req, res) => {
