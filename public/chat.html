@@ -1,51 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>维克斯 AI 助手</title>
-  <link rel="stylesheet" href="./assets/css/chat-2026.css">
+  <title>Vclaw · 对话</title>
+  <link rel="stylesheet" href="./assets/css/app-2026.css">
 </head>
 <body>
-  <div class="chat-container">
-    <header class="chat-header">
-      <div class="chat-logo">VICKS AI</div>
-      <div class="chat-token">Token 剩余：<span id="tokenCount">--</span></div>
-    </header>
-
-    <div class="chat-body" id="chatBody">
-      <div class="chat-message user-message">你好！请问我可以帮你什么？</div>
-      <div class="chat-message ai-message">你好！我可以帮助你完成各种任务。</div>
-    </div>
-
-    <div class="chat-footer">
-      <textarea id="inputMessage" class="chat-input" placeholder="输入您的问题..." rows="1"></textarea>
-      <button id="sendBtn" class="chat-send-btn">发送</button>
-    </div>
-  </div>
-
-  <script>
-    const sendBtn = document.getElementById('sendBtn');
-    const inputMessage = document.getElementById('inputMessage');
-    const chatBody = document.getElementById('chatBody');
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1 class="brand-logo">VCLAW</h1>
+      </div>
+      
+      <button id="newChatBtn" class="btn-new-chat">+ 新对话</button>
+      
+      <nav class="chat-history" id="chatHistory">
+        <!-- 对话历史将动态加载 -->
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <span id="userName">用户</span>
+          <span id="tokenCount" class="token-badge">0 tokens</span>
+        </div>
+        <a href="/profile.html" class="link-settings">设置</a>
+      </div>
+    </aside>
     
-    sendBtn.addEventListener('click', () => {
-      const message = inputMessage.value.trim();
-      if (message) {
-        const userMessage = document.createElement('div');
-        userMessage.classList.add('chat-message', 'user-message');
-        userMessage.textContent = message;
-        chatBody.appendChild(userMessage);
-        inputMessage.value = '';
-        // Add AI message as a placeholder for AI response
-        const aiMessage = document.createElement('div');
-        aiMessage.classList.add('chat-message', 'ai-message');
-        aiMessage.textContent = 'AI 正在思考...';
-        chatBody.appendChild(aiMessage);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }
-    });
-  </script>
+    <main class="chat-main">
+      <div class="chat-messages" id="chatMessages">
+        <div class="welcome-message">
+          <h2>欢迎来到 Vclaw</h2>
+          <p>有什么我可以帮助你的吗？</p>
+        </div>
+      </div>
+      
+      <div class="chat-input-area">
+        <form id="chatForm" class="chat-form">
+          <textarea id="messageInput" placeholder="输入消息..." rows="1"></textarea>
+          <button type="submit" class="btn-send">发送</button>
+        </form>
+      </div>
+    </main>
+  </div>
+  
+  <script src="./assets/js/chat.js"></script>
 </body>
 </html>

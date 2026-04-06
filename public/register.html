@@ -1,30 +1,44 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>维克斯 AI 助手 - 注册</title>
-  <link rel="stylesheet" href="./assets/css/auth-2026.css">
+  <title>Vclaw · 注册</title>
+  <link rel="stylesheet" href="./assets/css/app-2026.css">
 </head>
 <body>
   <div class="auth-container">
-    <div class="auth-panel">
-      <h2>创建账号</h2>
-      <p>注册后即可获得系统分配的初始 Token 配额，用于开始你的 AI 对话与文件处理工作流。</p>
-      <form id="registerForm">
-        <label for="username">用户名</label>
-        <input type="text" id="username" name="username" placeholder="请输入用户名" required>
-        <label for="password">密码</label>
-        <input type="password" id="password" name="password" placeholder="请输入密码" required>
-        <label for="confirmPassword">确认密码</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请确认密码" required>
-        <button type="submit" class="auth-btn">注册</button>
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1 class="brand-logo">VCLAW</h1>
+        <p class="brand-subtitle">创建新账号</p>
+      </div>
+      
+      <form id="registerForm" class="auth-form">
+        <div class="form-group">
+          <label for="username">用户名</label>
+          <input type="text" id="username" name="username" required autocomplete="username" placeholder="请输入用户名">
+        </div>
+        
+        <div class="form-group">
+          <label for="password">密码</label>
+          <input type="password" id="password" name="password" required autocomplete="new-password" placeholder="请输入密码">
+        </div>
+        
+        <div class="form-group">
+          <label for="confirmPassword">确认密码</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required autocomplete="new-password" placeholder="请再次输入密码">
+        </div>
+        
+        <button type="submit" class="btn-primary btn-full">注册</button>
       </form>
-      <div class="auth-links">
-        <a href="./index.html">返回登录</a> | <a href="./about.html">了解产品</a>
+      
+      <div class="auth-footer">
+        <p>已有账号？<a href="/index.html" class="link">立即登录</a></p>
       </div>
     </div>
   </div>
+  
+  <script src="./assets/js/auth.js"></script>
 </body>
 </html>
