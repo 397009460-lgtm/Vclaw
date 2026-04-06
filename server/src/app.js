@@ -55,6 +55,10 @@ async function main() {
     res.json({ success: true, app: config.appName, time: new Date().toISOString() });
   });
 
+  app.get('/build', (req, res) => {
+    res.json({ success: true, version: config.buildVersion, app: config.appName });
+  });
+
   app.use((req, res) => {
     res.status(404).sendFile(path.join(config.publicDir, 'index.html'));
   });

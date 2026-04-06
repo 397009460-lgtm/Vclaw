@@ -19,6 +19,7 @@ module.exports = {
   chatCostPerMessage: Number(process.env.CHAT_COST_PER_MESSAGE || 10),
   allowRegistration: String(process.env.ALLOW_REGISTRATION || 'true') === 'true',
   maxUploadSizeMb: Number(process.env.MAX_UPLOAD_SIZE_MB || 20),
+  buildVersion: process.env.BUILD_VERSION || '2026.04.06-r5',
   publicDir: path.resolve(rootDir, 'public'),
   dataDir: path.resolve(rootDir, 'data'),
   dbDir: path.resolve(rootDir, 'data/db'),
