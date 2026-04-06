@@ -1,0 +1,6 @@
+{
+  "allowRegistration": true,
+  "defaultInitialTokens": 10000,
+  "chatCostPerMessage": 10,
+  "maxUploadSizeMB": 20
+}

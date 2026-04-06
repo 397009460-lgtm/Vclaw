@@ -1,0 +1,15 @@
+services:
+  vicks-ai-web:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: vicks-ai-web
+    restart: unless-stopped
+    ports:
+      - "8889:8889"
+    env_file:
+      - ../.env
+    volumes:
+      - ../data:/app/data
+    working_dir: /app/server
+    command: ["node", "src/app.js"]

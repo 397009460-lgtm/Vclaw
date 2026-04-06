@@ -1,0 +1,25 @@
+{
+  "admin": {
+    "id": "admin",
+    "username": "admin",
+    "passwordHash": "$2a$12$ATLavmFnSfGjpbHWFGb8c..HjlorttvDU.aOxUR15amayc7UDV7CG",
+    "role": "admin",
+    "status": "active",
+    "tokens": -1,
+    "createdAt": "2026-04-05T15:39:02.192Z",
+    "updatedAt": "2026-04-05T15:39:02.192Z"
+  },
+  "users": [
+    {
+      "id": "user_1775403741872_4ff469fd",
+      "username": "week",
+      "passwordHash": "$2a$12$pcNKrPYlLQ7JYpJvZvoTkefVRj5XDDFR4ZkdKbE1gIPt1hOjYSsHa",
+      "role": "user",
+      "status": "active",
+      "tokens": 9990,
+      "createdAt": "2026-04-05T15:42:21.872Z",
+      "updatedAt": "2026-04-05T15:42:57.168Z",
+      "lastLoginAt": "2026-04-05T15:42:30.768Z"
+    }
+  ]
+}

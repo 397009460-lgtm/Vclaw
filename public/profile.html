@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>维克斯 AI 助手 - 个人中心</title>
+  <link rel="stylesheet" href="./assets/css/auth-2026.css">
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-panel">
+      <h2>个人中心</h2>
+      <div class="profile-details">
+        <p><strong>用户名：</strong><span id="profileUsername">--</span></p>
+        <p><strong>角色：</strong><span id="profileRole">--</span></p>
+        <p><strong>账户状态：</strong><span id="profileStatus">--</span></p>
+        <p><strong>Token 余额：</strong><span id="profileTokens">--</span></p>
+      </div>
+      <button id="refreshBtn" class="refresh-btn">刷新信息</button>
+    </div>
+  </div>
+
+  <script>
+    async function loadProfile() {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+
+      try {
+        const res = await fetch('/api/auth/me', { headers: { 'Authorization': 'Bearer ' + token } });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('profileUsername').textContent = data.user.username;
+          document.getElementById('profileRole').textContent = data.user.role;
+          document.getElementById('profileStatus').textContent = data.user.status;
+          document.getElementById('profileTokens').textContent = data.user.tokens || '0';
+        }
+      } catch (err) {
+        alert('获取个人信息失败');
+      }
+    }
+
+    document.getElementById('refreshBtn').addEventListener('click', loadProfile);
+    loadProfile();
+  </script>
+</body>
+</html>
