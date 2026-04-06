@@ -49,7 +49,32 @@ async function main() {
   app.use(morgan('combined'));
 
   app.use('/api', routes);
-  app.use(express.static(config.publicDir, { extensions: ['html'] }));
+  
+  // 静态文件缓存控制（双保险）
+  const staticOptions = {
+    extensions: ['html'],
+    setHeaders: (res, path, stat) => {
+      if (path.endsWith('.html') || path.endsWith('.css') || path.endsWith('.js')) {
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+        res.setHeader('Surrogate-Control', 'no-store');
+      }
+    }
+  };
+  app.use(express.static(config.publicDir, staticOptions));
+  
+  // 全局中间件：对 html/css/js 设置缓存控制
+  app.use((req, res, next) => {
+    const url = req.url.toLowerCase();
+    if (url.endsWith('.html') || url.endsWith('.css') || url.endsWith('.js') || url === '/') {
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
+      res.setHeader('Surrogate-Control', 'no-store');
+    }
+    next();
+  });
 
   app.get('/health', (req, res) => {
     res.json({ success: true, app: config.appName, time: new Date().toISOString() });
